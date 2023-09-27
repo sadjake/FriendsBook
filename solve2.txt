@@ -1,0 +1,19 @@
+notes
+
+each person in social network must have
+profile containing person's username,
+name (first and last), email, and bday
+
+join social network (create profile for user)
+
+search for particular profile
+(using username of profile)
+
+allows user to modify name, email address,
+birthday of user, but not username
+- does this mean username is private and
+everything else is public?
+
+leave the social network (by removing the user's profile from the network)
+
+

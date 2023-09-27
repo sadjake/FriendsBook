@@ -1,0 +1,28 @@
+**Step 1 - Problem Statement and Requirements:**
+1. Develop a FriendsBook application (a simple social network).
+2. Create a Profile class with attributes: username, first name, last name, email address, and birthday.
+3. Implement the following functionalities for the FriendsBook application:
+   a. Allow users to join the social network by creating a profile.
+   b. Enable users to search for profiles by username.
+   c. Allow users to modify their profile (name, email address, birthday).
+   d. Implement a way for users to leave the social network.
+   e. Implement a function to print all current users in ascending order of username.
+
+**Step 2 - Design and Step 3 - Implementation:**
+4. Design the MyADT class to manage Profile objects.
+5. The MyADT class should have methods with specific time efficiencies:
+   a. The insert method must have a time efficiency of O(m).
+   b. The search method must have a time efficiency of O(m) or O(log m).
+   c. The remove method must have a time efficiency of O(m).
+   d. Modify a Profile object efficiently.
+   e. The print method must have a time efficiency of O(n).
+
+**File Organization:**
+6. Create the MyADT class implementation (MyADT.cpp) based on the provided header (MyADT.h).
+7. Implement the FriendsBook application in the FriendsBook.cpp file.
+8. Ensure that each file contains a comment header block with filename, class description, class invariant (if any), author, date of creation/last modification.
+9. Document all class methods (public and private) with descriptions, preconditions (if any), and postconditions (if any).
+10. Use only arrays for your solution; do not use linked lists.
+11. Do not use the Standard Template Library (STL) in C++ for this project.
+12. Ensure your code follows the Good Programming Style guidelines mentioned in the course material.
+
