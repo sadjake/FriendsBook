@@ -192,7 +192,7 @@ void MyADT::print() {
       if (elements[i] != 0) {
          for (unsigned int j = 0; j < elementCount[i]; j++) {
             // print the users profile in the array
-            cout << elements[i][j] << endl;
+            cout << elements[i][j];
          }
       }
    }
