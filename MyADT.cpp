@@ -101,10 +101,6 @@ bool MyADT::insert(const Profile& newElement) {
       }
    }
 
-   // insert the new element at the first position
-   elements[arrayIndex][elementCount[arrayIndex]] = newElement;
-   elementCount[arrayIndex]++;
-
    // insert new element
    for (unsigned int i = 0; i < elementCount[arrayIndex]; i++) {
       if (elements[arrayIndex][i] > newElement) {
@@ -119,52 +115,12 @@ bool MyADT::insert(const Profile& newElement) {
          return true;
       }
    }
+   // insert the new element at the last position
+   elements[arrayIndex][elementCount[arrayIndex]] = newElement;
+   elementCount[arrayIndex]++;
    
-   // return false if the profile wasn't inserted
-   return false;
+   return true;
 } // end insert
-
-
-// bool MyADT::insert(const Profile& newElement) {
-//    // get index for profile array we want to insert at
-//    // check if array is already full, necause if full then cant insert
-//    // check if array is empty, then can create a new profile array and then
-//    // also need to check if profile array is
-
-//    // insert at the first index and increment 
-//    // then return true
-
-//    // find index based on the first letter of the username
-//    int index = newElement.getFirstLetter() - 'A';
-
-//    // check if there is an array created or not in that index
-//    if (elementCount[index] == 0) {
-//       // If no array exists, create one and initialize the elementCount 
-//       elements[index] = new Profile[MAX_ELEMENTS];
-//       elementCount[index] = 0;
-//    }
-
-//    // if there is an array, check for duplicate profile
-//    for (unsigned int i = 0; i < elementCount[index]; i++) {
-//          if (elements[index][i] == newElement) {
-//             cout << "This profile already exists." << endl;
-//             // Profile already exists, insertion failed
-//             return false;
-//          }
-//    }
-//    // if there is not a duplicate profile, insert it to next blank array spot
-//    // check using elementCount
-//    if (elementCount[index] < MAX_ELEMENTS) {
-//       elements[index][elementCount[index]] = newElement;
-//       elementCount[index]++;
-//       // profile inserted
-//       return true; 
-//    } else {
-//       //cout << "Array at index " << index << " is full. You cannot insert any more profiles." << endl;
-//       // Array full, failed insertion
-//       return false; 
-//    }
-// }
 
 // Description: Search for target element. 
 //              Returns a pointer to the element if found,
@@ -212,26 +168,6 @@ bool MyADT::remove(const Profile& toBeRemoved) {
    // return false if the profile wasn't found
    return false;
 } // end remove
-
-// bool MyADT::remove(const Profile& toBeRemoved) {
-//    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
-//       if (elements[i] != nullptr) {
-//          for (unsigned int j = 0; j < elementCount[i]; j++) {
-//             if (&elements[i][j] != nullptr && elements[i][j] == toBeRemoved) {
-//                // found the matching profile
-//                // rempve
-//                delete &elements[i][j];
-//                // set to nullptr
-//                elements[i][j] = nullptr;
-//                // decrement the element count for this array
-//                elementCount[i]--;
-//                // profile has successfully been removed
-//                return true;
-//             }
-//          }
-//       }
-//    }
-// } 
 
 // get the element index for the profile arraay I wanna remove
 // then cehck if its empty
