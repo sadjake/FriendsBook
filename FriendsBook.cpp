@@ -36,6 +36,7 @@ void join(MyADT & theMembers) {
    cout << "Enter a username (starting with a letter, no symbols): ";
    cin >> userName;
 
+   // get name
    cout << "Enter your name: ";
    // clear any remaining newline characters in input stream
    // by using cin.ignore
@@ -43,9 +44,11 @@ void join(MyADT & theMembers) {
    //use getline to read text and store it in name 
    getline(cin, name);
 
+   // get email
    cout << "Enter your email: ";
    cin >> email;
 
+   // get email
    cout << "Enter your birthday (Month/DD/YYYY): ";
    cin >> birthday;
 
@@ -56,6 +59,7 @@ void join(MyADT & theMembers) {
    if (theMembers.insert(newProfile)) {
       cout << "Profile created and joined FriendsBook successfully" << endl;
    } else {
+      // else, failed to join friendsbook
       cout << "Failed to join FriendsBook. The username might already be taken." << endl;
    }
 }
@@ -74,6 +78,7 @@ void leave(MyADT & theMembers) {
       cout << "You have left FriendsBook. Goodbye!" << endl;
    } 
    else {
+      // if can't remove the user's profile, still part of friendsbook
       cout << "Profile not found. You are still part of FriendsBook." << endl;
    }
 }
@@ -100,18 +105,20 @@ void search(MyADT & theMembers) {
       cout << "Profile found:" << endl;
       cout << *foundProfile;
    } else {
-      // for when profile isnt found
+      // when profile isnt found
       cout << "Profile not found." << endl;
    }
 }
 
 void modify(MyADT& theMembers) {
    // modify everything except username
-   // ask the user for username to be able to modify other parts of their info
+   // ask the user for username to be able
+   // to modify other parts of their info
 
    // initialize string variable for the username
    string username;
 
+   // enter username to modify profile
    cout << "Enter your username to modify your profile: ";
    cin >> username;
 
@@ -122,20 +129,22 @@ void modify(MyADT& theMembers) {
    Profile* foundProfile = theMembers.search(targetProfile);
 
    if (foundProfile != nullptr) {
+      // declare the strings
+      string newName;
+      string newEmail;
+      string newBirthday;
+
       //prompt to update name
       cout << "Enter new name: ";
-      string newName;
       cin.ignore();
       getline(cin, newName);
 
       // prompt to update email
       cout << "Enter new email: ";
-      string newEmail;
       getline(cin, newEmail);
 
       // prompt to update birthday
       cout << "Enter new birthday: ";
-      string newBirthday;
       getline(cin, newBirthday);
 
       // update the profile information
@@ -200,3 +209,4 @@ int main() {
 
     return 0;
 }
+// sept 29 2023

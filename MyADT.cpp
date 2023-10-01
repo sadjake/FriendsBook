@@ -19,12 +19,14 @@
 
 using std::cout;
 using std::endl;
-    
+
 // Default constructor.
 MyADT::MyADT() {
    // personal note: use unsigned int i not just int i
    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
+         // set element pointers to null
          elements[i] = nullptr;
+         // set elementCount to 0
          elementCount[i] = 0;
    }
 }  // end default constructor
@@ -35,11 +37,13 @@ MyADT::MyADT(const MyADT& rhs) {
    // if profile array is empty
    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
       if (rhs.elements[i] == nullptr) {
+         // element pointer to nullptr
          elements[i] = nullptr;
+         // elementCount to 0
          elementCount[i] = 0;
-      } 
-      
+      }
       else {
+         // initialize profile array
          elements[i] = new Profile[MAX_ELEMENTS];
          // copy element count
          elementCount[i] = rhs.elementCount[i];
@@ -57,15 +61,17 @@ MyADT::MyADT(const MyADT& rhs) {
 // Destructor
 // Description: Destruct this object, releasing heap-allocated memory.
 MyADT::~MyADT() {
+   // delete profile arrays and set element pointers to nullptr
    removeAll();
 } // end destructor
 
 // Description: Returns the total element count of elements currently stored in MyADT.
 unsigned int MyADT::getElementCount() const {
-
+   // initialize new variable for the total sum of element count
    unsigned int element_count = 0;
 
    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
+         // add up
          element_count += elementCount[i];
    }
    return element_count;
@@ -117,6 +123,7 @@ bool MyADT::insert(const Profile& newElement) {
    }
    // insert the new element at the last position
    elements[arrayIndex][elementCount[arrayIndex]] = newElement;
+   // increment 
    elementCount[arrayIndex]++;
    
    return true;
@@ -126,7 +133,9 @@ bool MyADT::insert(const Profile& newElement) {
 //              Returns a pointer to the element if found,
 //              otherwise, returns nullptr.
 Profile* MyADT::search(const Profile& target) {
+   // element index for the profile array
    int index = target.getFirstLetter() - 'A';
+
    for (unsigned int i = 0; i < elementCount[index]; i++) {
       if (elements[index][i] == target) {
          return &elements[index][i];
@@ -169,29 +178,37 @@ bool MyADT::remove(const Profile& toBeRemoved) {
    return false;
 } // end remove
 
+// pseudo for remove
 // get the element index for the profile arraay I wanna remove
 // then cehck if its empty
+// scratch this part below
 // then check if elementCount is 1, then set elements index to nullptr 
 // but not the index in the profile array, the index, 
-// then do search
+
+// then  find the profile that sohuld be removed
 // once found, go thru loop to shift elements to left to overwirte what I have
-// also want to delete the memory
 
 // Description: Remove all elements.
 void MyADT::removeAll() {
    // remove profiles, arrays should still be present 
    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
-      if (elementCount[i] != 0) {
+         // delete 
          delete[] elements[i];
-      }
+         // set to nullptr
+         elements[i] = nullptr;
+         // set elementCount to 0
+         elementCount[i] = 0;
    }
 }  // end removeAll
 
 void MyADT::print() {
    for (unsigned int i = 0; i < MAX_ALPHA; i++) {
-      if (elements[i] != 0) {
+      // if elemenets are not null
+      if (elements[i] != nullptr) {
          for (unsigned int j = 0; j < elementCount[i]; j++) {
             // print the users profile in the array
+            // personal note: dont use endl here since it messes with
+            // the formatting when I print it
             cout << elements[i][j];
          }
       }
@@ -199,3 +216,4 @@ void MyADT::print() {
 } // end of print 
 
 //  End of implementation file
+// sept 29 2023
